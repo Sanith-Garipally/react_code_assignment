@@ -1,10 +1,9 @@
-// Simulate an async API call
 export const fetchTransactions = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Simulate error randomly
-    //   if (Math.random() < 0.1)
-    //     return reject(new Error('Failed to fetch transactions'));
+      //   Simulate error randomly
+
+    //   reject(new Error('Failed to fetch transactions'));
       resolve([
         // customerId, transactionId, amount, date (YYYY-MM-DD)
         { customerId: 1, transactionId: 101, amount: 120, date: '2025-06-10' },
@@ -32,5 +31,5 @@ export const fetchTransactions = () =>
           date: `2025-06-${(i % 28) + 1}`,
         })),
       ]);
-    }, 1000);
+    }, 2000);
   });
