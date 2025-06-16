@@ -234,6 +234,7 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
           rowKey={(obj) => obj.transactionId}
           scroll={{
             y: '320px',
+            x: 'max-content'
           }}
         />
       </Drawer>

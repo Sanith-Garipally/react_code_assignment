@@ -87,7 +87,8 @@ const TransactionsTable = () => {
                   size='small'
                   loading={transactionsLoader}
                   scroll={{
-                    y: '320px'
+                    y: '320px',
+                    x: 'max-content'
                   }}
                 />
               ),

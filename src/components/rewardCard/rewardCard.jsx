@@ -5,7 +5,7 @@ import { calculatePoints } from '../../utils/calculatePoints';
 
 // Styled for the points
 const Points = styled.span`
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #1677ff; /* Ant Design primary blue */
   letter-spacing: 1px;
