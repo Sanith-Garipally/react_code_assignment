@@ -4,7 +4,7 @@ import TransactionTableHeader from './tableHeader';
 import { Section, StyledTable } from '../styles/globalStyles';
 import RewardsSummary from './rewardsSummary';
 import styled from 'styled-components';
-import RewardCard from './rewardCard';
+import RewardCard from './rewardCard/rewardCard';
 
 const FlexContainer = styled.div`
   display: flex;

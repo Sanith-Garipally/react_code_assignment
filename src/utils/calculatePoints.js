@@ -1,4 +1,4 @@
-export const calculatePoints = (data) => {
+export const calculatePoints = (data=[]) => {
   const total = data.reduce(
     (pre, cur) => {
       pre.points += cur.points;
@@ -9,7 +9,7 @@ export const calculatePoints = (data) => {
   return total.points || 0;
 };
 
-export const calculateRewardPointsWithSlabs = (amount) => {
+export const calculateRewardPointsWithSlabs = (amount=0) => {
   let points = 0;
   if (amount > 100) {
     points += 2 * (amount - 100) + 50; // 2 points over $100, plus 1 point for $50-$100

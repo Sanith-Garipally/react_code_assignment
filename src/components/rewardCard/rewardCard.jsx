@@ -1,7 +1,7 @@
 import { Card } from 'antd';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { calculatePoints } from '../utils/calculatePoints';
+import { calculatePoints } from '../../utils/calculatePoints';
 
 // Styled for the points
 const Points = styled.span`
@@ -36,7 +36,7 @@ const RewardCard = ({ transactions, heading }) => {
   const total = calculatePoints(transactions)
   return (
     <SectionWrapper>
-      <StyledHeading>{heading}</StyledHeading>
+      <StyledHeading data-testid="reward-heading">{heading}</StyledHeading>
       <Card
         style={{
           maxWidth: 340,
