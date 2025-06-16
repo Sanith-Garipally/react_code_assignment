@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
-import { Form, Select, Button, Divider, DatePicker, message, Card } from 'antd';
+import { useEffect } from 'react';
+import { Form, Select, Button, DatePicker, message, Card } from 'antd';
 import customersData from '../lib/customersData.json';
 import { fetchTransactions } from '../api/fetchData';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
+import { calculateRewardPointsWithSlabs } from '../utils/calculatePoints';
+import PropTypes from 'prop-types';
 const { RangePicker } = DatePicker;
 dayjs.extend(isBetween);
 
@@ -20,14 +22,9 @@ const TransactionTableHeader = ({
 
       let data = await fetchTransactions();
       data = data.map((obj) => {
-        let points = 0;
         const { amount } = obj;
-        if (amount > 100) {
-          points += 2 * (amount - 100) + 50; // 2 points over $100, plus 1 point for $50-$100
-        } else if (amount > 50) {
-          points += amount - 50;
-        }
-        return { ...obj, points: Math.floor(points) };
+        const earnedPoints = calculateRewardPointsWithSlabs(amount);
+        return { ...obj, points: earnedPoints };
       });
       let startRange = '';
       let endRange = '';
@@ -85,7 +82,7 @@ const TransactionTableHeader = ({
   }, []);
 
   return (
-    <Card title="Filter Transactions">
+    <Card title='Filter Transactions'>
       <Form
         form={form}
         onFinish={filterTransactionsData}
@@ -117,3 +114,8 @@ const TransactionTableHeader = ({
 };
 
 export default TransactionTableHeader;
+
+TransactionTableHeader.propTypes = {
+  filterTransactionsAndUpdateState: PropTypes.func.isRequired,
+  setTransactionsLoader: PropTypes.func.isRequired
+};

@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Tabs } from 'antd';
-import TransactionTableHeader from './TableHeader';
+import TransactionTableHeader from './tableHeader';
 import { Section, StyledTable } from '../styles/globalStyles';
-import RewardsSummary from './RewardsSummary';
+import RewardsSummary from './rewardsSummary';
 import styled from 'styled-components';
-import RewardCard from './RewardCard';
+import RewardCard from './rewardCard';
 
 const FlexContainer = styled.div`
   display: flex;

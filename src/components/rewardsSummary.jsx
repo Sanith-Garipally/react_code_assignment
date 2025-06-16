@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Button, Card, Drawer, Table, Tag, Typography } from 'antd';
+import { Button, Card, Drawer } from 'antd';
 import { EyeOutlined } from '@ant-design/icons';
 import { StyledTable } from '../styles/globalStyles';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 // Styled container for the two sections
 const FlexContainer = styled.div`
@@ -158,8 +159,6 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
     return b.month - a.month;
   });
 
-  const total = months.reduce((sum, m) => sum + m.points, 0);
-
   const summaryColumns = [
     {
       title: 'Month',
@@ -209,9 +208,6 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
         dataSource={months}
         loading={transactionsLoader}
         rowKey={(obj) => obj.month + obj.year}
-        scroll={{
-          y: '320px',
-        }}
       />
       <Drawer
         width={940}
@@ -243,4 +239,9 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
       </Drawer>
     </Card>
   );
+}
+
+RewardsSummary.propTypes = {
+  transactions: PropTypes.array.isRequired,
+  transactionsLoader: PropTypes.bool.isRequired
 }

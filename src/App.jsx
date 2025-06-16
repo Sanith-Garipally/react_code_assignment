@@ -1,4 +1,4 @@
-import TransactionsTable from './components/TransactionsTable';
+import TransactionsTable from './components/transactionsTable';
 import { GlobalStyle, Section } from './styles/globalStyles';
 
 const App = () => {

@@ -1,5 +1,7 @@
 import { Card } from 'antd';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { calculatePoints } from '../utils/calculatePoints';
 
 // Styled for the points
 const Points = styled.span`
@@ -31,13 +33,7 @@ const StyledHeading = styled.h3`
 `;
 
 const RewardCard = ({ transactions, heading }) => {
-  const total = transactions.reduce(
-    (pre, cur) => {
-      pre.points += cur.points;
-      return pre;
-    },
-    { points: 0 }
-  );
+  const total = calculatePoints(transactions)
   return (
     <SectionWrapper>
       <StyledHeading>{heading}</StyledHeading>
@@ -49,7 +45,7 @@ const RewardCard = ({ transactions, heading }) => {
         }}
       >
         <Points>
-          {total.points} <StyledSpan>pts</StyledSpan>
+          {total} <StyledSpan>pts</StyledSpan>
         </Points>
       </Card>
     </SectionWrapper>
@@ -57,3 +53,8 @@ const RewardCard = ({ transactions, heading }) => {
 };
 
 export default RewardCard;
+
+RewardCard.propTypes = {
+  transactions: PropTypes.array.isRequired,
+  heading: PropTypes.string.isRequired,
+};
