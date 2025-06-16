@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Form, Select, Button, Divider, DatePicker, message } from 'antd';
+import { Form, Select, Button, Divider, DatePicker, message, Card } from 'antd';
 import customersData from '../lib/customersData.json';
 import { fetchTransactions } from '../api/fetchData';
 import dayjs from 'dayjs';
@@ -85,7 +85,7 @@ const TransactionTableHeader = ({
   }, []);
 
   return (
-    <>
+    <Card title="Filter Transactions">
       <Form
         form={form}
         onFinish={filterTransactionsData}
@@ -112,8 +112,7 @@ const TransactionTableHeader = ({
           </Button>
         </Form.Item>
       </Form>
-      <Divider />
-    </>
+    </Card>
   );
 };
 

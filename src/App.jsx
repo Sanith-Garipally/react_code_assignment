@@ -1,5 +1,5 @@
 import TransactionsTable from './components/TransactionsTable';
-import { GlobalStyle } from './styles/globalStyles';
+import { GlobalStyle, Section } from './styles/globalStyles';
 
 const App = () => {
 

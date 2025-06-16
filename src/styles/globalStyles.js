@@ -1,3 +1,4 @@
+import { Table } from 'antd';
 import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -15,4 +16,11 @@ export const Container = styled.div`
 
 export const Section = styled.div`
   margin-bottom: 32px;
+`;
+
+export const StyledTable = styled(Table)`
+  .ant-table-thead > tr > th {
+    background: #e6f4ff;         /* Light blue background */
+    letter-spacing: 0.5px;
+  }
 `;
