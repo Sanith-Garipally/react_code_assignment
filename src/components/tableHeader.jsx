@@ -32,9 +32,9 @@ const TransactionTableHeader = ({
 
       if (!customers && !months) {
         updatedState = data;
-      } else if (customers && !months.length) {
+      } else if (customers && !months) {
         updatedState = data.filter((obj) => obj.customerId === customers);
-      } else if (!customers && months.length) {
+      } else if (!customers && months) {
         startRange = dayjs(dayjs(months[0], 'YYYY-MM').startOf('month')).format(
           'YYYY-MM-DD'
         );

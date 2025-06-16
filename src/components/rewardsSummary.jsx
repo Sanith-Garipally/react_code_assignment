@@ -201,13 +201,18 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
   ];
 
   return (
-    <Card>
+    <>
       <StyledTable
         size='small'
         columns={summaryColumns}
         dataSource={months}
         loading={transactionsLoader}
         rowKey={(obj) => obj.month + obj.year}
+        style={{width: "100%"}}
+        scroll={{
+          y: "300px",
+          x: 'max-content'
+        }}
       />
       <Drawer
         width={940}
@@ -238,7 +243,7 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
           }}
         />
       </Drawer>
-    </Card>
+    </>
   );
 }
 

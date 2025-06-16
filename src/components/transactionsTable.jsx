@@ -86,6 +86,7 @@ const TransactionsTable = () => {
                   rowKey={(obj) => obj.transactionId}
                   size='small'
                   loading={transactionsLoader}
+                  style={{width: '100%'}}
                   scroll={{
                     y: '320px',
                     x: 'max-content'
