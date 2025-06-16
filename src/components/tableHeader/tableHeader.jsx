@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Form, Select, Button, DatePicker, message, Card } from 'antd';
-import customersData from '../lib/customersData.json';
-import { fetchTransactions } from '../api/fetchData';
+import customersData from '../../lib/customersData.json';
+import { fetchTransactions } from '../../api/fetchData';
 import dayjs from 'dayjs';
 import isBetween from 'dayjs/plugin/isBetween';
-import { calculateRewardPointsWithSlabs } from '../utils/calculatePoints';
+import { calculateRewardPointsWithSlabs } from '../../utils/calculatePoints';
 import PropTypes from 'prop-types';
 const { RangePicker } = DatePicker;
 dayjs.extend(isBetween);
@@ -89,7 +89,7 @@ const TransactionTableHeader = ({
         layout='inline'
         size='small'
       >
-        <Form.Item label='Customers' name={'customers'}>
+        <Form.Item label='Customers' name={'customers'} htmlFor='customers'>
           <Select
             size='small'
             options={customersData}
@@ -98,6 +98,8 @@ const TransactionTableHeader = ({
             showSearch
             optionFilterProp='label'
             allowClear
+            id='customers'
+            data-testid='customersSelect'
           />
         </Form.Item>
         <Form.Item label='Date Range' name={'months'}>

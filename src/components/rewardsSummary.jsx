@@ -44,7 +44,7 @@ const StyledHeading = styled.h3`
 
 const RewardCard = ({ points, month, year }) => (
   <Card
-    style={{ maxWidth: 340, borderRadius: 12, boxShadow: '0 2px 8px #f0f1f2' }}
+    style={{ maxWidth: 440, borderRadius: 12, boxShadow: '0 2px 8px #f0f1f2' }}
   >
     <FlexContainer>
       <Points>{points} pts</Points>
@@ -62,6 +62,7 @@ const columns = [
     key: 'transactionId',
     ellipsis: true,
     sorter: (a, b) => a.transactionId - b.transactionId,
+    width: 200
   },
   {
     title: 'Date',
@@ -208,7 +209,6 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
         dataSource={months}
         loading={transactionsLoader}
         rowKey={(obj) => obj.month + obj.year}
-        style={{width: "100%"}}
         scroll={{
           y: "300px",
           x: 'max-content'

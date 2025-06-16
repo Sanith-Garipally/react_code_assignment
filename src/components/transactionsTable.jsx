@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Tabs } from 'antd';
-import TransactionTableHeader from './tableHeader';
+import { Col, Row, Tabs } from 'antd';
+import TransactionTableHeader from './tableHeader/tableHeader';
 import { Section, StyledTable } from '../styles/globalStyles';
 import RewardsSummary from './rewardsSummary';
 import styled from 'styled-components';
@@ -59,44 +59,48 @@ const TransactionsTable = () => {
           setTransactionsLoader={setTransactionsLoader}
         />
       </Section>
-      <FlexContainer>
-        <RewardCard transactions={transactions} heading={'Rewards'}/>
-        <Tabs
-          defaultActiveKey='1'
-          items={[
-            {
-              key: '1',
-              label: 'Monthly Rewards Summary',
-              children: (
-                <Section>
-                  <RewardsSummary
-                    transactions={transactions}
-                    transactionsLoader={transactionsLoader}
+      <Row justify={"space-between"}>
+        <Col span={4}>
+          <RewardCard transactions={transactions} heading={'Rewards'} />
+        </Col>
+        <Col span={19}>
+          <Tabs
+            defaultActiveKey='1'
+            items={[
+              {
+                key: '1',
+                label: 'Monthly Rewards Summary',
+                children: (
+                  <Section>
+                    <RewardsSummary
+                      transactions={transactions}
+                      transactionsLoader={transactionsLoader}
+                    />
+                  </Section>
+                ),
+              },
+              {
+                key: '2',
+                label: 'Transaction Details',
+                children: (
+                  <StyledTable
+                    columns={columns}
+                    dataSource={transactions}
+                    rowKey={(obj) => obj.transactionId}
+                    size='small'
+                    loading={transactionsLoader}
+                    style={{ width: '100%' }}
+                    scroll={{
+                      y: '320px',
+                      x: 'max-content',
+                    }}
                   />
-                </Section>
-              ),
-            },
-            {
-              key: '2',
-              label: 'Transaction Details',
-              children: (
-                <StyledTable
-                  columns={columns}
-                  dataSource={transactions}
-                  rowKey={(obj) => obj.transactionId}
-                  size='small'
-                  loading={transactionsLoader}
-                  style={{width: '100%'}}
-                  scroll={{
-                    y: '320px',
-                    x: 'max-content'
-                  }}
-                />
-              ),
-            },
-          ]}
-        />
-      </FlexContainer>
+                ),
+              },
+            ]}
+          />
+        </Col>
+      </Row>
     </>
   );
 };
