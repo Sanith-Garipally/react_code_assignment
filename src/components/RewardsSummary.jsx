@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Button, Card, Drawer, Table, Tag, Typography } from 'antd';
 import { EyeOutlined } from '@ant-design/icons';
 import { StyledTable } from '../styles/globalStyles';
 import styled from 'styled-components';
-const { Text } = Typography;
 
 // Styled container for the two sections
 const FlexContainer = styled.div`
@@ -211,6 +209,9 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
         dataSource={months}
         loading={transactionsLoader}
         rowKey={(obj) => obj.month + obj.year}
+        scroll={{
+          y: '320px',
+        }}
       />
       <Drawer
         width={940}
@@ -236,7 +237,7 @@ export default function RewardsSummary({ transactions, transactionsLoader }) {
           dataSource={currentRecord.transactions || []}
           rowKey={(obj) => obj.transactionId}
           scroll={{
-            y: '320px'
+            y: '320px',
           }}
         />
       </Drawer>
